@@ -24,14 +24,17 @@ std::vector<int> removeDuplicates(const std::vector<int>& myList) {
     
     
     
-    std::set<int> mySet;
-    for(const auto &i: myList){
-        if(mySet.find(i) == mySet.end())
-            mySet.emplace(i);
-    }
+    // std::set<int> mySet;
+    // for(const auto &i: myList){
+    //     if(mySet.find(i) == mySet.end())
+    //         mySet.emplace(i);
+    // }
     
-    std::vector<int> myVector{mySet.begin(), mySet.end()};
-    return myVector;    
+    // std::vector<int> myVector{mySet.begin(), mySet.end()};
+    // return myVector;    
+
+    std::set<int> mySet{myList.begin(), myList.end()};
+    return {mySet.begin(), mySet.end()};
 }
 
 int main()
