@@ -1,3 +1,10 @@
+/*
+ In this exercise, you will implement the bubbleSort() method 
+ to sort a singly linked list using the Bubble Sort algorithm. 
+ The goal is to sort the linked list in ascending order 
+ without creating any new nodes. 
+ You will only rearrange the value fields of the existing nodes.
+*/
 #include<iostream>
 
 class Node
@@ -233,7 +240,7 @@ bool LinkedList::insert(int index, int value){
         std::cout << "Out of bound" << std::endl;
         return false;
     }
-    if(!index){  // index == 0
+    if(!index){
         prepend(value);
         return true;
     }
