@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 
 struct Node
 {
@@ -15,15 +16,22 @@ private:
 public:
     BinarySearchTree();
     ~BinarySearchTree();
+    void destroy(Node* currentNode);
 
     bool insert(int);
     bool contains(int);
     Node *getRoot(){ return root;}
+    void BFS();
 };
 
 BinarySearchTree::BinarySearchTree() : root{} {}
-BinarySearchTree::~BinarySearchTree()
-{
+BinarySearchTree::~BinarySearchTree() { destroy(root); }
+
+void BinarySearchTree::destroy(Node* currentNode) {
+    if (currentNode == nullptr) return;
+    if (currentNode->left) destroy(currentNode->left);
+    if (currentNode->right) destroy(currentNode->right);
+    delete currentNode;
 }
 
 bool BinarySearchTree::insert(int val){
@@ -67,6 +75,20 @@ bool BinarySearchTree::contains(int val){
     return false;
 }
 
+void BinarySearchTree::BFS(){    
+    std::queue<Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        Node *currentNode{q.front()};
+        q.pop();
+        std::cout << currentNode->value << " ";
+        if(currentNode->left)
+            q.push(currentNode->left);
+        if(currentNode->right)
+            q.push(currentNode->right);
+    }
+}
+
 int main()
 {
     BinarySearchTree *myBST = new BinarySearchTree();
@@ -77,19 +99,10 @@ int main()
     myBST->insert(18);
     myBST->insert(52);
     myBST->insert(82);
-    
-    std::cout << "New value adding.." << std::endl; 
     myBST->insert(27);
-
-    std::cout << "New value: " 
-    << myBST->getRoot()->left->right->value << std::endl;
     
-    std::cout << std::boolalpha << std::endl;
-    std::cout << "Value 29 is contained: " 
-    << myBST->contains(29) << std::endl;
+    myBST->BFS();
 
-    std::cout << "Value 52 is contained: " 
-    << myBST->contains(52) << std::endl;
 }
 
 

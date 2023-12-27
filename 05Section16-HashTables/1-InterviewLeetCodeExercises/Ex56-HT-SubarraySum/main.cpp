@@ -66,7 +66,8 @@ std::vector<int> subarraySum(const std::vector<int>& nums, int target) {
 
 int main()
 {
-    std::vector<int> nums{3, 2, 5};
+    // std::vector<int> nums{3, 2, 5};
+	std::vector<int> nums{3, 4, 5, 2, 3};
     std::vector<int> indices = subarraySum(nums, 10);
     std::cout << "indices: " << indices.at(0) << ", " << indices.at(1) << std::endl;
 }
