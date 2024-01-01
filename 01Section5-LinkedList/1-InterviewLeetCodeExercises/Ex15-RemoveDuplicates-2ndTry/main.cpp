@@ -133,7 +133,7 @@ public:
         Node *ptr{head}, *temp{};
         std::unordered_set<int> mySet{};
         while(ptr){
-            if(mySet.emplace(ptr->value).second){
+            if(mySet.emplace(ptr->value).second){  // true if insertion happened
             //if(mySet.find(ptr->value) == mySet.end()){
                 //mySet.emplace(ptr->value);
                 temp = ptr;
@@ -152,6 +152,19 @@ public:
 
 int main()
 {
+    LinkedList ll{7};
+    ll.append(3);
+    ll.append(3);
+    ll.append(3);
+    ll.append(5);
+    ll.append(1);
+
+    std::cout << "Before removing duplicates:" << std::endl;
+    ll.printList();
+
+    ll.removeDuplicates();
+    std::cout << "After removing duplicates:" << std::endl;
+    ll.printList();
     
 }
 
