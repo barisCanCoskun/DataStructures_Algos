@@ -361,6 +361,44 @@ void LinkedList::reverse(){
 // }
 
 // third try
+// void LinkedList::merge(LinkedList &otherList){
+//     if(!otherList.length) return ;
+//     Node dummy(0);
+//     Node *currentNode{&dummy};
+//     Node *otherHead{otherList.head};
+//     while(head && otherHead){
+//         if(head->value <= otherHead->value){
+//             currentNode->next = head;
+//             head = head->next;
+//         }
+//         else{
+//             currentNode->next = otherHead;
+//             otherHead = otherHead->next;
+//         }
+//         currentNode = currentNode->next;
+//     }
+
+//     while(head){
+//         currentNode->next = head;
+//         head = head->next;
+//         currentNode = currentNode->next;
+//     }
+//     while(otherHead){
+//         currentNode->next = otherHead;
+//         otherHead = otherHead->next;
+//         currentNode = currentNode->next;
+//     }
+
+//     head = dummy.next;
+//     tail = currentNode;
+//     length += otherList.length;
+
+//     otherList.head = nullptr;
+//     otherList.tail = nullptr;
+//     otherList.length = 0;
+// }
+
+// fourth try
 void LinkedList::merge(LinkedList &otherList){
     if(!otherList.length) return ;
     Node dummy(0);
@@ -378,25 +416,20 @@ void LinkedList::merge(LinkedList &otherList){
         currentNode = currentNode->next;
     }
 
-    while(head){
-        currentNode->next = head;
-        head = head->next;
-        currentNode = currentNode->next;
-    }
-    while(otherHead){
+    if(otherHead){
         currentNode->next = otherHead;
-        otherHead = otherHead->next;
-        currentNode = currentNode->next;
+        tail = otherList.tail;
+    }
+    if(head){
+        currentNode->next = head;
     }
 
     head = dummy.next;
-    tail = currentNode;
     length += otherList.length;
 
     otherList.head = nullptr;
     otherList.tail = nullptr;
     otherList.length = 0;
-
 }
 
 int main()
