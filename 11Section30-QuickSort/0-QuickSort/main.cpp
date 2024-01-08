@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 
 void quickSort(int a[], int leftIndex, int rightIndex);
 int pivot(int a[], int pivotIndex, int endIndex);
