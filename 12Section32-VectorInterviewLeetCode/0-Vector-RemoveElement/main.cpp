@@ -1,6 +1,6 @@
 #include<iostream>
 #include<vector>
-// #include<algorithm>
+#include<algorithm>
 
 void removeElement(std::vector<int> &nums, int val){
     // auto it{nums.begin()};
